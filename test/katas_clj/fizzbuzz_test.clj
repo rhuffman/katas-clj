@@ -21,3 +21,5 @@
 (deftest fizzbuzz-2-test
   (run fizzbuzz-2))
 
+(deftest fizzbuzz-3-test
+  (run fizzbuzz-3))

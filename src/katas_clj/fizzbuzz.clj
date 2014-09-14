@@ -10,5 +10,17 @@
         n))))
 
 (defn fizzbuzz-2 [n]
-  n)
+  (if (zero? (rem n 15))
+    "fizzbuzz"
+    (if (zero? (rem n 5))
+      "buzz"
+      (if (zero? (rem n 3))
+        "fizz"
+        n))))
 
+(defn fizzbuzz-3 [n]
+  (cond
+    (zero? (rem n 15)) "fizzbuzz"
+    (zero? (rem n 5)) "buzz"
+    (zero? (rem n 3)) "fizz"
+    :else n))
