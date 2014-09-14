@@ -1,5 +1,7 @@
 (ns katas-clj.fizzbuzz)
 
+; My first (possibly naive) implmentation: just a sequence
+; of if-then-else statements
 (defn fizzbuzz-1 [n]
   (if (= (rem n 15) 0)
     "fizzbuzz"
@@ -9,6 +11,7 @@
         "fizz"
         n))))
 
+; Ah-ha! There's a better way to test for zero
 (defn fizzbuzz-2 [n]
   (if (zero? (rem n 15))
     "fizzbuzz"
@@ -18,6 +21,7 @@
         "fizz"
         n))))
 
+; Now use the cond macro
 (defn fizzbuzz-3 [n]
   (cond
     (zero? (rem n 15)) "fizzbuzz"
