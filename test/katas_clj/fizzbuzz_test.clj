@@ -2,6 +2,8 @@
   (:require [clojure.test :refer :all]
             [katas-clj.fizzbuzz :refer :all]))
 
+; Map of test data. Key is input to the fizzbuzz function; value is
+; the expected output from the fizzbuzz function
 (def test-data {1 1
                 2 2
                 3 "fizz"
@@ -11,15 +13,19 @@
                 10 "buzz"
                 15 "fizzbuzz"})
 
+; Array of fizzbuzz functions to test
+(def fizzbuzz-fns [fizzbuzz-1
+                   fizzbuzz-2
+                   fizzbuzz-3])
+
+; Take a fizzbuzz function as input. Run the fizzbuzz function
+; on each key in test-data and compare the output to the
+; expected value
 (defn run [fizzbuzz]
   (doseq [[input expected] test-data]
     (is (= (fizzbuzz input) expected))))
 
-(deftest fizzbuzz-1-test
-  (run fizzbuzz-1))
-
-(deftest fizzbuzz-2-test
-  (run fizzbuzz-2))
-
-(deftest fizzbuzz-3-test
-  (run fizzbuzz-3))
+; Iterate the list of fizzbuzz functions, testing each in turn
+(deftest fizzbuzz-test
+  (doseq [fizzbuzz fizzbuzz-fns]
+     (run fizzbuzz)))
