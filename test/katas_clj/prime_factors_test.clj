@@ -4,7 +4,7 @@
 
 ; Map of test data. Key is input to the function being tested;
 ; value is ; the expected output
-(def test-data [[1 [1]]
+(def test-data [[1 []]
                 [2 [2]]
                 [3 [3]]
                 [4 [2 2]]
@@ -13,6 +13,13 @@
                 [7 [7]]
                 [8 [2 2 2]]
                 [9 [3 3]]
+                [10 [2 5]]
+                [11 [11]]
+                [12 [2 2 3]]
+                [13 [13]]
+                [14 [2 7]]
+                [15 [3 5]]
+                [16 [2 2 2 2]]
                 ])
 
 ; Array of functions to test
