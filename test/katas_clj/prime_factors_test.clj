@@ -32,13 +32,12 @@
   (doseq [[input expected] test-data]
     (is (= (test-function input) expected))))
 
-; Iterate the list of functions, testing each in turn
+; Iterate the list of functions, invoking (run fn) for each in turn
 (deftest all-functions-test
   (doseq [test-function test-functions]
     (run test-function)))
 
-
-
-
-
-
+; Test that a very large number doesn't blow the stack
+;(deftest large-number-test
+;  (doseq [test-function test-functions]
+;    (test-function (- (long (Math/pow 2 32)) 1))))
