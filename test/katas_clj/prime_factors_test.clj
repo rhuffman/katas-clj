@@ -12,6 +12,7 @@
                 [6 [2 3]]
                 [7 [7]]
                 [8 [2 2 2]]
+                [9 [3 3]]
                 ])
 
 ; Array of functions to test
@@ -22,8 +23,7 @@
 ; expected value in test-data
 (defn run [test-function]
   (doseq [[input expected] test-data]
-    (let [actual (test-function input)]
-          (is (= actual expected)))))
+    (is (= (test-function input) expected))))
 
 ; Iterate the list of functions, testing each in turn
 (deftest all-functions-test
