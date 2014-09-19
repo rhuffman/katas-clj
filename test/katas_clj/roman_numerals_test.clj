@@ -6,6 +6,7 @@
 
 (deftest roman-test
   (are [input expected] (= expected (roman input))
+                        0 ""
                         1 "I"
                         2 "II"
                         3 "III"
