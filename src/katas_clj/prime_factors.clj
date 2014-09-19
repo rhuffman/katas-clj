@@ -15,13 +15,15 @@
 
 ;; This implementation comes from a StackOverflow thread:
 ;; http://stackoverflow.com/questions/9556393/clojure-tail-recursion-with-prime-factors
-;; Wish I had the chops to come up with this
+;; Wish I had the chops to come up with this.
 (defn prime-factors-2
-  ([n] (prime-factors-2 n 2))
+  ([n]
+   (assert (> n 0))
+   (prime-factors-2 n 2))
   ([n candidate]
-   (cond (<= n 1) ()
-     (zero? (rem n candidate)) (cons candidate (lazy-seq (prime-factors-2 (/ n candidate)
-                                                           candidate)))
+   (cond
+     (= n 1) ()
+     (divisible-by? n candidate) (cons candidate (lazy-seq (prime-factors-2 (/ n candidate) candidate)))
      :else (recur n (inc candidate)))))
 
 
