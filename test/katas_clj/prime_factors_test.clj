@@ -41,3 +41,4 @@
 (deftest large-number-test
   (doseq [test-function test-functions]
     (test-function (- (long (Math/pow 2 32)) 1))))
+
