@@ -23,7 +23,9 @@
                 ])
 
 ; Array of functions to test
-(def test-functions [prime-factors-1])
+(def test-functions
+  [prime-factors-1
+   prime-factors-2])
 
 ; Takes a function as input, invokes the function
 ; on each key in test-data, and compares the output to the
@@ -42,3 +44,5 @@
   (doseq [test-function test-functions]
     (test-function (- (long (Math/pow 2 32)) 1))))
 
+(deftest really-big-number-test
+  (prime-factors-2 4611686018427387902))
