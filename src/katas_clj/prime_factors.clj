@@ -5,9 +5,9 @@
 
 (defn add-factors [n divisor factors-so-far]
   (cond
-    (= n 1) factors-so-far
-    (divisible-by? n divisor) (cons divisor (add-factors (/ n divisor) divisor factors-so-far))
-    :else (add-factors n (inc divisor) factors-so-far)))
+    (= n 1) (reverse factors-so-far)
+    (divisible-by? n divisor) (recur (/ n divisor) divisor (cons divisor factors-so-far))
+    :else (recur n (inc divisor) factors-so-far)))
 
 (defn prime-factors-1 [n]
   (assert (> n 0))

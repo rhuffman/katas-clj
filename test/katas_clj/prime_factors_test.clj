@@ -38,6 +38,6 @@
     (run test-function)))
 
 ; Test that a very large number doesn't blow the stack
-;(deftest large-number-test
-;  (doseq [test-function test-functions]
-;    (test-function (- (long (Math/pow 2 32)) 1))))
+(deftest large-number-test
+  (doseq [test-function test-functions]
+    (test-function (- (long (Math/pow 2 32)) 1))))
