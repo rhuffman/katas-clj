@@ -46,3 +46,5 @@
 
 (deftest really-big-number-test
   (prime-factors-2 4611686018427387902))
+
+(run-tests)

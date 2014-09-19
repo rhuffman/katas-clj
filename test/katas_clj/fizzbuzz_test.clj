@@ -29,3 +29,5 @@
 (deftest fizzbuzz-test
   (doseq [fizzbuzz fizzbuzz-fns]
      (run fizzbuzz)))
+
+(run-tests)
