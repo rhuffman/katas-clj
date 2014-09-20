@@ -19,11 +19,19 @@
                { :value 1    :symbol "I"}
               ])
 
+;; Finds the next symbol to be added to our Roman numeral. It does
+;; this by searching the list of symbols linearly for the first one
+;; whose value is less than or equal to n. For instance, if n is 970,
+;; then the next symbol in our roman numeral should be "CM" because
+;; 900 is less than or equal to 970.
 (defn next-symbol [n]
-  (first (filter #(>= n (:value %)) symbols)))
+  (first (filter #(<= (:value %) n) symbols)))
 
+;; Returns the Roman numeral representation for a given value
 (defn roman [n]
   (if (zero? n)
     ""
-    (let [sym (next-symbol n)]
+    (let [sym (next-symbol n)]  ; Finds the next symbol to put in the result
+      ;; Now concatenate that symbol to the lazy sequence found by substracting
+      ;; the value of the symbolf from n
       (str (:symbol sym) (apply str (lazy-seq (roman (- n (:value sym)))))))))

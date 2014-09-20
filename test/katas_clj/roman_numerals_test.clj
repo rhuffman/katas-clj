@@ -3,7 +3,9 @@
             [clojure.test.tap :refer :all]
             [katas-clj.roman-numerals :refer :all]))
 
-
+;; Tests the roman-numeral function. Thank you Google for
+;; providing an easy way to convert numbers to Roman numerals
+;; for this test
 (deftest roman-test
   (are [input expected] (= expected (roman input))
                         0      ""
