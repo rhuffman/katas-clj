@@ -6,11 +6,13 @@
 
 (deftest roman-test
   (are [input expected] (= expected (roman input))
-                        0 ""
-                        1 "I"
-                        2 "II"
-                        3 "III"
-                        5 "V"))
+                        0      ""
+                        1      "I"
+                        2      "II"
+                        3      "III"
+                        5      "V"
+                        10     "X"
+                        20     "XX"))
 
 
 (run-tests)
