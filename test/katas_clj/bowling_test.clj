@@ -40,7 +40,7 @@
                                    0 [8 2 7] [8 2 17]       ; spare, first frame
                                    9 [1 9 10] [1 9 29]      ; spare, frame after the first
                                    0 [10 2 8] [10 nil 20]   ; strike, first frame
-                                   9 [10 10 10] [10 nil 38] ; strike, frame after the first
+                                   9 [10 10 10] [10 nil 39] ; strike, frame after the first
                                    ))
 
 ;(deftest bowling-test
