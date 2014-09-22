@@ -1,5 +1,43 @@
 (ns katas-clj.bowling)
 
+(defn strike? [frame]
+  (= 10 (get frame 0)))
+
+(defn spare? [frame]
+  (let [roll-1 (get frame 0)
+        roll-2 (get frame 1)]
+    (and
+      (not (nil? roll-2))
+      (= 10 (+ roll-1 roll-2))
+      )))
+
+(defn complete? [frame]
+  (or
+    (nil? frame)
+    (strike? frame)
+    (not (nil? (get frame 1)))
+    ))
+
+(defn frame-total
+  "Given the total before a frame, the first roll for the frame and the next two rolls,
+  returns the total after the frame."
+  [total three-rolls]
+
+  (assert (= 3 (.length three-rolls)))
+
+  (let [roll-1 (get three-rolls 0)
+        roll-2 (get three-rolls 1)
+        roll-3 (get three-rolls 2)]
+    (cond
+      (= 10 roll-1) (+ total roll-1 roll-2 roll-3)
+      (= 10 (+ roll-1 roll-2)) (+ total roll-1 roll-2 roll-3)
+      :else (+ total (reduce + (take 2 three-rolls))))))
+
+(defn frame [total three-rolls]
+  [(get three-rolls 0)
+   (if (= 10 (get three-rolls 0)) nil (get three-rolls 1))
+   (frame-total total three-rolls)])
+
 ;; Takes a sequence of pin counts thrown on successive
 ;; rolls by a single player during a game of bowling.
 ;; Returns a sequence of 10 maps, one per frame,
@@ -10,4 +48,5 @@
 ;;   :cumulative   Cumlative score for the game at the
 ;;                 end of the frame
 (defn score [pin-counts]
-  )
+  (pin-counts))
+
