@@ -3,30 +3,6 @@
             [clojure.test.tap :refer :all]
             [katas-clj.bowling :refer :all]))
 
-(deftest test-strike
-  (are [frame expected] (= expected (strike? frame))
-                        nil false
-                        [10 nil nil] true
-                        [1 9 nil] false
-                        [1 nil nil] false
-                        ))
-
-(deftest test-spare
-  (are [frame expected] (= expected (spare? frame))
-                        nil false
-                        [10 nil nil] false
-                        [1 9 nil] true
-                        ))
-
-(deftest test-complete
-  (are [frame expected] (= expected (complete? frame))
-                        nil true
-                        [10 nil nil] true
-                        [1 9 nil] true
-                        [1 0 nil] true
-                        [1 nil nil] false
-                        ))
-
 (defn compare-seq [expected actual]
   (let [same (= 0 (compare expected actual))]
     (do
