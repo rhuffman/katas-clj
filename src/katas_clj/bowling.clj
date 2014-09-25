@@ -28,7 +28,7 @@
     (if (= frame-count 10)
       frames
       (let [pin-counts (if (= 0 frame-count) pin-counts (if (strike? (last frames)) (subvec pin-counts 1) (subvec pin-counts 2)))]
-        (recur (frames (conj frames frame((inc frame-count) total pin-counts))) pin-counts)))))
+        (recur (conj frames (frame (inc frame-count) total pin-counts)) pin-counts)))))
 
 ;; Takes a sequence of pin counts thrown on successive
 ;; rolls by a single player during a game of bowling.

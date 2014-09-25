@@ -49,7 +49,7 @@
     ))
 
 (deftest bowling-test
-  (are [pin-counts expected] (zero? (compare expected (score pin-counts)))
+  (are [pin-counts expected] (compare-coll expected (score pin-counts))
                              [1 4 4 5 6 4 5 5 10 0 1 7 3 6 4 10 2 8 6]
                              [{:roll-1 1  :roll-2 4   :roll-3 nil :total 5  }
                               {:roll-1 4  :roll-2 5   :roll-3 nil :total 14 }
