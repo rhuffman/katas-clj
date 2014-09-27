@@ -13,8 +13,8 @@
        (= 0 length) nil
        (= 1 length) (if (= value vec-value) start-index nil)
        (= value vec-value) (+ start-index half)
-       (< value vec-value) (binary-search-subvector (subvec subvector 0 half) value start-index)
-       (> value vec-value) (binary-search-subvector (subvec subvector half) value (+ start-index half))))))
+       (< value vec-value) (recur (subvec subvector 0 half) value start-index)
+       (> value vec-value) (recur (subvec subvector half) value (+ start-index half))))))
 
 (defn binary-search
   "Returns the index of the specified value within the sorted vector v. If the vector
