@@ -4,7 +4,7 @@
             [katas-clj.binary-search :refer :all]))
 
 (deftest test-search
-  (are [vec value expected] (= expected (search vec value))
+  (are [vec value expected] (= expected (binary-search vec value))
                             [] 100 nil
 
                             [100] 100 0
@@ -25,10 +25,10 @@
 
 
 (defn add-random
-  "Adds a random integer between 0 and 10 to x. Allows me to create a sorted
+  "Adds a random integer between 1 and 10 to x. Allows me to create a sorted
   vector of n (more or less) random vaues like this: (take n (iterate add-random 1))"
   [x]
-  (+ x (int (* 10 (rand)))))
+  (+ x (int (+ 1 (* 10 (rand))))))
 
 (deftest test-big-vector
   ; Create vector with one million sorted integers. Pick a value out of it, then
@@ -37,7 +37,7 @@
         vector (vec (take size (iterate add-random 1)))
         expected-index 87432
         value (get vector expected-index)
-        actual (search vector value)]
+        actual (binary-search vector value)]
     (is (= expected-index actual))))
 
 (run-tests)
