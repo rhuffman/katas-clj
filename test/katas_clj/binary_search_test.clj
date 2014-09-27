@@ -23,16 +23,21 @@
                             [100 101 102] 104 nil
                             ))
 
-(defn add-random [x]
+
+(defn add-random
+  "Adds a random integer between 0 and 10 to x. Allows me to create a sorted
+  vector of n (more or less) random vaues like this: (take n (iterate add-random 1))"
+  [x]
   (+ x (int (* 10 (rand)))))
 
 (deftest test-big-vector
-  (let [vector (vec (take 5000 (iterate add-random 1)))
-        size (.length vector)
-        idx 4323
-        value (get vector idx)
+  ; Create vector with one million sorted integers. Pick a value out of it, then
+  ; search for that value
+  (let [size 1000000
+        vector (vec (take size (iterate add-random 1)))
+        expected-index 87432
+        value (get vector expected-index)
         actual (search vector value)]
-    (is (= idx actual))))
-
+    (is (= expected-index actual))))
 
 (run-tests)
